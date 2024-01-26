@@ -1,14 +1,16 @@
-import time
+    import time
 import requests
 
 # Создание задачи
 response = requests.get("https://playground.learnqa.ru/ajax/api/longtime_job")
+print(response.text)
 token = response.json()['token']
 seconds = response.json()['seconds']
 
 # Выполнение запроса до того, как задача готова
 payload = {"token": token}
 response = requests.get("https://playground.learnqa.ru/ajax/api/longtime_job", params = payload)
+
 assert response.json()['status'] == 'Job is NOT ready', "задача не готова"
 
 # Ожидание
