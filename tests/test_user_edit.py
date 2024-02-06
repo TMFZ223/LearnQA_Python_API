@@ -69,7 +69,7 @@ def test_edit_user_email_without_at_symbol(self):
         cookies={"auth_sid": auth_sid},
         data={"email": new_email}
     )
-    Assertions.assert_code_status(response, 400)
+    Assertions.assert_code_status(response, 400)  # Предполагаемый код ошибки для невалидного email
 
 # Попытка изменить firstName пользователя на очень короткое значение в один символ
 def test_edit_user_firstname_to_one_char(self):
